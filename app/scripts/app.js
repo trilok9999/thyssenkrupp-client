@@ -16,19 +16,50 @@ angular.module('app', ['ionic', 'app.controllers'])
 })
 
 // Services are here. Usually they are placed in services.js, since it's minimal, placed inside the main app
-.factory('getData',['$http',function($http){
-    return{
-        getProducts:getProducts
-    };
+.factory('getData',['$http',function($http) {
+
+      // This function returns unique products from the response. Takes input JSON object with array of ticket information
+    function getUniqueProducts(response) {
+        var products = []
+        
+        response.forEach(function(obj) {
+            obj.product.forEach(function(productObj) {
+                if(products.indexOf(productObj.name) == -1) {
+                    products.push(productObj.name);
+                }
+            })
+        });
+        return products;
+    }
+
+    // This function returns the filtered list of selected tickets.
+    function getFilteredList(response, name) {
+        var selected = [];
+
+        response.forEach(function(obj){
+            obj.product.forEach(function(productObj) {
+                if (productObj.name===name) {
+                    selected.push((obj));
+                }
+            })
+        });
+        return selected;
+    }
+
     function getProducts(){
       // Calling our thyssenkrupp server to get products and ticket information
-        return  $http.get('http://localhost:3000/getProducts').then(Onsuccess, OnError);
+        return  $http.get('http://localhost:3000/getProducts').then(onSuccess, onError);
     };
-    function Onsuccess(response){
+    function onSuccess(response) {
         return response.data;
     };
-    function OnError(response){
+    function onError(response) {
         return response.status;
+    };
+    return{
+        getProducts:getProducts,
+        getUniqueProducts: getUniqueProducts,
+        getFilteredList: getFilteredList
     };
 }])
 

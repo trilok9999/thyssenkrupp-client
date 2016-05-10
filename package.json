@@ -37,6 +37,8 @@
     "cordova": "~4.2.0",
     "lodash": "~3.1.0",
     "mkdirp": "~0.5.0",
+    "mocha": "~2.4.5",
+    "chai": "~3.5.0",
     "ncp": "~1.0.1",
     "orchestrator": "~0.3.7",
     "ripple-emulator": "~0.9.24",
