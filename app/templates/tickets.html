@@ -1,13 +1,15 @@
-<ion-view title="Tickets" id="page5" ng-repeat="product in selected">
+<ion-view title="Tickets" id="page5" >
     <ion-content padding="true" class="has-header">
-        <div class="list card">
+        <div class="list card" ng-repeat="product in products">
             <div class="item item-divider">{{product.company}}</div>
             <div class="item item-body">
                 <div id="tickets-markdown2" style="color:#000000;">
-                    <p>{{product.description}}</p>
+                    <h3>Description</h3>
+                        <p>{{product.description}}</p>
                 </div>
                 <div id="tickets-markdown3" style="color:#000000;">
-                    <p>{{product.email}}</p>
+                <h3>Address</h3>
+                    <p>{{product.address1}}</p>
                 </div>
             </div>
         </div>

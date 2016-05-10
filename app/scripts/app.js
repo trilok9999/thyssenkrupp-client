@@ -22,7 +22,7 @@ angular.module('app', ['ionic', 'app.controllers'])
     };
     function getProducts(){
       // Calling our thyssenkrupp server to get products and ticket information
-        return  $http.get('http://localhost:3000/getProducts').then(Onsuccess,OnError);
+        return  $http.get('http://localhost:3000/getProducts').then(Onsuccess, OnError);
     };
     function Onsuccess(response){
         return response.data;
